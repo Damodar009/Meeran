@@ -1,26 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import createTheme from '@material-ui/core/styles/createTheme';
+import SearchIcon from '@mui/icons-material/Search';
+import { ThemeProvider } from '@mui/material';
+import Badge from './components/atom/badge';
+import MyButton from './components/atom/button';
+import InputField from './components/atom/input-field';
+import PasswordField from './components/atom/password_feild';
+import MyMenu from './components/organism/appbar';
+import { themeOptions } from './theme';
 
 function App() {
+  const theme = createTheme(themeOptions)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <div>
+        <MyMenu></MyMenu>
+
+        <MyButton variant="contained" elevation={true} prefixIcon={<SearchIcon />} onClick={() => { }} size="large" >
+          Button
+        </MyButton >
+        <Badge />
+        {/* <Table /> */}
+        <InputField label='Label'onChange={() => { }  } hint="Enter your name" />
+        <PasswordField/>
+      </div>
+    </ThemeProvider>
   );
 }
-
 export default App;
